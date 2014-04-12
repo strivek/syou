@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* reset */
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+  margin: 0;
+  padding: 0; }
+
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+  display: block; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th {
+  text-align: left;
+  font-weight: normal; }
+
+html, body, fieldset, img, iframe, abbr {
+  border: 0; }
+
+i, cite, em, var, address, dfn {
+  font-style: normal; }
+
+[hidefocus], summary {
+  outline: 0; }
+
+li {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6, small {
+  font-size: 100%; }
+
+sup, sub {
+  font-size: 83%; }
+
+pre, code, kbd, samp {
+  font-family: inherit; }
+
+q:before, q:after {
+  content: none; }
+
+textarea {
+  overflow: auto;
+  resize: none; }
+
+label, summary {
+  cursor: default; }
+
+a, button {
+  cursor: pointer; }
+
+h1, h2, h3, h4, h5, h6, em, strong, b {
+  font-weight: bold; }
+
+del, ins, u, s, a, a:hover {
+  text-decoration: none; }
+
+body, textarea, input, button, select, keygen, legend {
+  font: 12px/1.14 arial,\5b8b\4f53;
+  color: #333;
+  outline: 0; }
+
+body {
+  background: #fff; }
+
+a, a:hover {
+  color: #333; }
+
+/* 左图右文图文列表-默认竖排 */
+.m-list3 {
+  padding: 1px 0 0;
+  zoom: 1; }
+
+.m-list3 ul {
+  margin: -11px 0 0; }
+
+.m-list3 li {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin: 10px 0 0; }
+
+.m-list3 .txt {
+  float: right;
+  width: 100%;
+  height: 95px;
+  overflow: hidden;
+  margin-left: -110px; }
+
+.m-list3 h3, .m-list3 p {
+  margin-left: 110px;
+  overflow: hidden;
+  line-height: 18px; }
+
+.m-list3 h3 {
+  margin-bottom: 5px; }
+
+.m-list3 h3 a, .m-list3 h3 a:hover {
+  color: #333; }
+
+.m-list3 .u-img {
+  float: left;
+  width: 100px;
+  height: 100px; }
+
+.m-list3 .u-img2 {
+  float: left;
+  width: 94px;
+  height: 94px; }
+
+/* 横排 */
+.m-list3-x ul {
+  margin: -11px 0 0 -10px; }
+
+.m-list3-x li {
+  width: 230px;
+  margin: 10px 0 0 10px; }
+
+/* 无边图片容器-默认定宽定高、图片拉伸 */
+.u-img {
+  display: block;
+  position: relative;
+  width: 110px;
+  height: 110px; }
+
+.u-img img {
+  display: block;
+  width: 100%;
+  height: 100%; }
+
+/* 图片高适应 */
+.u-img-ha, .u-img-ha img {
+  height: auto; }
+
+/* 图片高适应 */
+/* 有边图片容器-默认定宽定高、图片拉伸 */
+.u-img2 {
+  display: block;
+  position: relative;
+  width: 104px;
+  height: 104px;
+  padding: 2px;
+  border: 1px solid #ddd; }
+
+.u-img2 img {
+  display: block;
+  width: 100%;
+  height: 100%; }
+
+/* 图片高适应 */
+.u-img2-ha, .u-img2-ha img {
+  height: auto; }

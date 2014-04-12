@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>get and set</title>
+</head>
+<body>
+	<script>
+	function counter(n){
+		return {
+			get count(){return n++},
+			set count(m){
+				alert(1);
+				if(m>=n) n = m;
+				else throw Error("count can only set to a large value");
+
+			}
+		}
+	}
+	var c =counter(1000);
+	
+	c.count =2000;
+	function dwn(msg){
+		document.write(msg+"<br />")
+	}
+	</script>
+</body>
+</html>
