@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function 判断是否处于严格模式</title>
+</head>
+<body>
+	<script>
+	"use strict";
+	var calcu = {//对象直接量
+		oper1: 1,
+		oper2: 2,
+		add: function(){
+			return function(){
+				alert(1);
+			};
+		}
+
+	};
+	calcu.add()();
+	function dwn(msg){
+		document.write(msg +"<br />");
+	}
+	</script>
+</body>
+</html>

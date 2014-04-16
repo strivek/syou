@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function 判断是否处于严格模式</title>
+</head>
+<body>
+	<script>
+	"use strict";
+	var  strict = (function(){return !this}());
+	alert(strict);
+	</script>
+</body>
+</html>
