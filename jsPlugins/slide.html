@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery插件拓展</title>
+</head>
+<div class="m-slide">
+    <div class="content">
+        <a href="#">a</a><a href="#">2</a><a href="#">3</a><a href="#"></a><a href="#">2</a>
+    </div>
+</div>
+<div class="m-slide1">
+    <div class="content">
+        <a href="#">a</a><a href="#">2</a><a href="#">3</a><a href="#"></a><a href="#">2</a>
+    </div>
+</div>
+<body>
+<script src="../js/jquery-1.10.1.js"></script>
+<script>
+    $((function () {
+        var option = {
+                    num: '这是第一个对象'
+                },
+                option1 = {
+                    num: '这是第二个对象'
+                }
+
+        $.fn.slide = function (option) {
+            var settings = $.extend({}, option)
+            //根据配置的参数，返回各自特征的函数
+            return $.each(option, function () {
+                alert(option.num);
+            });
+        }
+
+        $(".m-slide").slide(option);
+        $(".m-slide2").slide(option1);
+    })())
+</script>
+</body>
+</html>
