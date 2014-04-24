@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>jquery插件拓展</title>
 </head>
+
+<body>
 <div class="m-slide">
     <div class="content">
         <a href="#">a</a><a href="#">2</a><a href="#">3</a><a href="#"></a><a href="#">2</a>
@@ -14,27 +16,30 @@
         <a href="#">a</a><a href="#">2</a><a href="#">3</a><a href="#"></a><a href="#">2</a>
     </div>
 </div>
-<body>
 <script src="../js/jquery-1.10.1.js"></script>
 <script>
     $((function () {
-        var option = {
-                    num: '这是第一个对象'
-                },
-                option1 = {
-                    num: '这是第二个对象'
-                }
+        $.fn.slide = function (options) {
+            var settings = $.extend({num: "我是默认参数"}, options);
 
-        $.fn.slide = function (option) {
-            var settings = $.extend({}, option)
             //根据配置的参数，返回各自特征的函数
-            return $.each(option, function () {
-                alert(option.num);
+            return $.each(options, function () {
+                // ##TODO 写一个方法，可以测试each的作用；
             });
         }
-        $(".m-slide").slide(option);
-        $(".m-slide2").slide(option1);
+
     })())
+
+    var options = {
+                num: '我是外来参数',
+                name: '这是我的名字'
+            },
+            options2 = {
+                num: '这是第二个对象'
+            }
+
+    $(".m-slide").slide(options);
+    $(".m-slide").slide(options2);
 </script>
 </body>
 </html>

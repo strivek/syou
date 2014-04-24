@@ -4,23 +4,80 @@
     <meta charset="UTF-8">
     <title>列表滚动</title>
     <style>
-        ul{ position: relative }
+        ul{ position: relative; }
+
+        .btn{ line-height: 50px; }
 
         ul li{ position: relative; display: block; background: Peru; line-height: 30px; }
+
+        .ul1{ height: 0 }
     </style>
 </head>
 <body>
-<ul>
-    <li>内容1</li>
-    <li>内容2</li>
-    <li>内容3</li>
-    <li>内容4</li>
-    <li>内容5</li>
-</ul>
-<script src="../js/jquery-1.10.1.js"></script>
-<script src="../js/greensock/TweenMax.min.js"></script>
-<scirpt>
+<div class="wrap">
+    <div class="btn">下拉菜单1</div>
+    <ul data-scroll="easeOutBounce">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+    </ul>
+</div>
+<div class="wrap">
+    <div class="btn">下拉菜单2</div>
+    <ul data-scroll="easeOutBack">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+    </ul>
+</div>
+<div class="wrap">
+    <div class="btn">下拉菜单2</div>
+    <ul data-scroll="easeOutBack">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+    </ul>
+</div>
+<div class="wrap">
+    <div class="btn1">下拉菜单2</div>
+    <ul class="ul1" data-scroll="easeOutBack">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+    </ul>
+</div>
 
-</scirpt>
+
 </body>
+<script src="../js/jquery-1.10.1.js"></script>
+<script src="../js/jquery.easing.1.3.js"></script>
+<script src="../js/greensock/TweenMax.min.js"></script>
+
+<script>
+    $(".btn").click(function (e) {
+        var detail = $(e.target).parent().find("ul");
+        var method = detail.data("scroll");
+        if (detail.is(":visible")) {
+            detail.slideUp(800, method);
+        } else {
+            detail.slideDown(800, method);
+        }
+    })
+    $(".btn1").click(function (e) {
+        var detail = $(e.target).parent().find("ul");
+        var method = detail.data("scroll");
+
+
+    })
+
+
+</script>
 </html>
