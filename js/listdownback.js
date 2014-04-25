@@ -8,20 +8,21 @@ $((function () {
         return $.each(this, function (options) {
             var $list = $(this).find(" > ul"),
                 $link = $(this).find("> :first-child"),
+                $linkParent = $link.parent();
                 hideElem = {overflow: 'hidden', display: 'none'};
             $list.css(hideElem);
 
             function toggleList(e) {
                 var listHeight = $list.height();
                 console.log(listHeight);
-                if (!$link.hasClass("z-active")) {
-                    $link.addClass("z-active");
+                if (!$linkParent.hasClass("z-active")) {
+                    $linkParent.addClass("z-active");
                     TweenMax.fromTo($list, settings.time, {height: 0}, {height: listHeight, display: 'block', ease: Elastic.easeOut, onComplete: function () {
                         $list.css({height: 'auto'})
                     }});
 
                 } else {
-                    $link.removeClass("z-active");
+                    $linkParent.removeClass("z-active");
                     TweenMax.to($list, settings.time, {height: 0, ease: Elastic.easeOut, onComplete: function () {
                         $list.css({height: 'auto', display: 'none'});
                     }});
