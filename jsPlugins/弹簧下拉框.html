@@ -5,9 +5,12 @@
     <title>列表滚动</title>
     <link rel="stylesheet" href="../css/reset.css"/>
     <style>
-        .listdrop{ background: Peru; font-size: 16px; line-height20px; text-align: center }
+        .listdrop{ background: Peru; font-size: 16px; line-height: 40px; text-align: center }
 
-        .listdrop-menu{ display: none; background: aliceblue }
+        .listdrop-menu{ background: aliceblue; }
+
+        .listdrop-menu1{ background: aliceblue; }
+
 
     </style>
 </head>
@@ -17,6 +20,16 @@
     <ul class="listdrop-menu" role="menu">
         <li>内容1</li>
         <li>内容2</li>
+        <li class="listdrop1">
+            <p>这是第二个下拉框</p>
+            <ul class="listdrop-menu1">
+                <li>内容2222222222222222</li>
+                <li>内容2222222222222222</li>
+                <li>内容2222222222222222</li>
+                <li>内容2222222222222222</li>
+                <li>内容2222222222222222</li>
+            </ul>
+        </li>
         <li>内容3</li>
         <li>内容4</li>
         <li>内容5</li>
@@ -32,9 +45,7 @@
 <script src="../js/greensock/TweenMax.min.js"></script>
 <script src="../js/listdownback.js"></script>
 <script>
-
-    var options = {time: 1};
-    $(".listdrop").listDownBack(options);
-
+    $(".listdrop").listDownBack();
+    $(".listdrop1").listDownBack();
 </script>
 </html>
