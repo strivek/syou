@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/function.css"/>
+</head>
+<body>
+<div id="editor" contenteditable> Click to edit</div>
+<script>
+    var ss = document.styleSheets[0];
+    var rules = ss.cssRules ? ss.cssRules : ss.rules;
+    for (var i = 0; i < rules.length; i++) {
+        var rule = rules[i];
+        if (!rule.selectorText) {
+            continue;
+        }
+        var selector = rule.selectorText;
+        var ruleText = rule.style.cssText;
+        dwn(selector);
+        dwn(ruleText);
+    }
+    function dwn(doc) {
+        document.write(doc + "<br />");
+    }
+
+</script>
+</body>
+</html>

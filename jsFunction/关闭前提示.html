@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    window.onbeforeunload = function (e) {
+        e = e || window.event;
+        if (e) {
+            e.returnValue = "您确定要关闭窗口么"
+        }
+
+        return "您确定要关闭窗口么？chrome"
+    }
+</script>
+</body>
+</html>
