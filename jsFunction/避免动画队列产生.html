@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    $(".list-side-item").click(function () {
+        // 方法一 停止动画，缺点是让动画无法完整
+        //  $(".sub-list",this).stop().slideToggle();
+        $(".sub-list", this).filter(':not(:animated)').slideToggle();
+    })
+</script>
+</body>
+</html>

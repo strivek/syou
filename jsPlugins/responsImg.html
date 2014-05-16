@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            position: relative;
+            width: auto;
+            height: 100%;
+            margin-left: -20%;
+            left: 0;
+            top: 0;
+            width: 200px;
+        }
+
+        .wrap{
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <img src="../img/big.jpg" alt=""/>
+</div>
+<script src="../js/jquery-1.10.1.js"></script>
+<script>
+    $("img").load(function () {
+        var img = $(this);
+        var imgWidth = img.outerWidth();
+        alert(imgWidth);
+
+    })
+    alert($("img").width());
+</script>
+</body>
+</html>
