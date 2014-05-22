@@ -1,0 +1,46 @@
+.g-list1{
+    margin-top: 80px;
+}
+
+.m-list1{
+    .img{
+        overflow: hidden;
+    }
+    img{
+        width: 100%;
+        overflow: hidden;
+        @include transform(scale(1.1));
+        @include transition(all .2s ease-in);
+    }
+    .tt{
+        overflow: hidden;
+        padding: 30px 0;
+        height: 80px;
+        background: $mainblue;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+    }
+    .ct{
+        height: 146px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        color: $mainblue;
+        padding: 25px;
+        line-height: 1.5;
+        word-break: break-all;
+    }
+
+}
+
+.m-list1:hover{
+    .img img{
+        @include transition(all .2s ease-out);
+        @include transform(scale(1));
+    }
+    .ct{
+        @include transition(all .2s ease-out);
+        background: $mainbluelighter;
+    }
+
+}

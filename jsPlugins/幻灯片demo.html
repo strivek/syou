@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/syou.css"/>
+</head>
+
+<body>
+<div class="container-fluid g-sld">
+    <div class="m-sld ">
+        <div id="step-1" class="list-item">
+
+        </div>
+        <div id="step-2" class="list-item">
+
+        </div>
+        <div id="step-3" class="list-item">
+
+        </div>
+        <div id="step-4" class="list-item">
+
+        </div>
+        <div id="step-5" class="list-item">
+
+        </div>
+        <div id="step-6" class="list-item">
+
+        </div>
+
+
+    </div>
+</div>
+<script src="../js/jquery-1.10.1.js"></script>
+<script>
+    $(".list-item").hover(function () {
+        var index = $(this).index();
+        $(".list-item:lt(" + index + ")").addClass("hover-before");
+        $(".list-item:gt(" + index + ")").addClass("hover-after");
+        $(this).addClass("hover");
+    }, function () {
+        $(".list-item").removeClass("hover hover-before hover-after")
+    })
+    $(".list-item").click(function (e) {
+        var index = $(this).index();
+        $(".m-sld").attr("id", "z-detail")
+//
+//    $(".list-item").not(":gt("+index+")").addClass("before-click");
+//    $(".list-item:gt("+index+")").addClass("after-click");
+        e.stopPropagation();
+
+    })
+    $("body").click(function () {
+        $(".list-item").removeClass("before-click after-click");
+        $("#step-6").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function () {
+        });
+    })
+
+</script>
+</body>
+</html>
