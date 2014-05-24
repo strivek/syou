@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/flexslider.css"/>
+</head>
+<body>
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <img src="../img/slide1.jpg"/>
+        </li>
+        <li>
+            <img src="../img/slide2.jpg"/>
+        </li>
+        <li>
+            <img src="../img/slide3.jpg"/>
+        </li>
+        <li>
+            <img src="../img/slide4.jpg"/>
+        </li>
+    </ul>
+</div>
+<script src="../js/jquery-1.10.1.js"></script>
+<script src="../js/slide/jquery.flexslider-min.js"></script>
+<script>
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
+    });
+</script>
+</body>
+</html>

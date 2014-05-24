@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/syou.css"/>
+    <link rel="stylesheet" href="../css/flexslider.css"/>
+    <script>
+
+    </script>
+</head>
+
+<body>
+<div class="container-fluid g-sld">
+    <div class="row fullscreen">
+        <div class="col-md-12 fullscreen wrap">
+            <div class="m-sld">
+                <div id="step-1" class="list-item">
+
+                </div>
+                <div id="step-2" class="list-item">
+
+                </div>
+                <div id="step-3" class="list-item">
+
+                </div>
+                <div id="step-4" class="list-item">
+
+                </div>
+                <div id="step-5" class="list-item">
+
+                </div>
+                <div id="step-6" class="list-item">
+
+                </div>
+                <div id="step-7" class="list-item">
+
+                </div>
+                <div id="step-8" class="list-item">
+
+                </div>
+                <div id="step-9" class="list-item">
+
+                </div>
+            </div>
+
+            <div class="flexslider">
+                <div class="btn-return">返回</div>
+                <ul class="slides">
+                    <li>
+                        <img src="../img/slide1.jpg"/>
+                    </li>
+                    <li>
+                        <img src="../img/slide2.jpg"/>
+                    </li>
+                    <li>
+                        <img src="../img/slide3.jpg"/>
+                    </li>
+                    <li>
+                        <img src="../img/slide4.jpg"/>
+                    </li>
+                    <li>
+                        <img src="../img/slide1.jpg"/>
+                    </li>
+                    <li>
+                        <img src="../img/slide2.jpg"/>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/jquery-1.10.1.js"></script>
+<script src="../js/greensock/TweenLite.min.js"></script>
+<script src="../js/greensock/TimelineLite.min.js"></script>
+<script src="../js/greensock/plugins/CSSPlugin.min.js"></script>
+<script src="../js/slide/jquery.flexslider-min.js"></script>
+
+<script>
+    var extendDoor;
+    var openDoor;
+    var flexslider;
+
+    $(".list-item").on("mouseenter", mousehover)
+    $(".list-item").click(doorOpen);
+    $(".btn-return").click(closeDoor);
+
+
+    $(window).load(function () {
+        flexslider = $('.flexslider').flexslider({
+            slideshow: false
+        });
+    });
+
+
+    function closeDoor() {
+        openDoor.totalDuration(1).reverse();
+
+
+    }
+
+    function doorOpen(e) {
+        $(".list-item").off("mouseenter", mousehover);
+        var index = $(this).index(),
+                bf = $(".list-item:lt(" + index + ")"),
+                af = $(".list-item:gt(" + index + ")"),
+                cur = $(this),
+                slideId = $(this).attr("id").split("-")[1]，
+            zindex = $(".m-sld");
+
+        $(".g-sld .flex-control-paging li").eq(slideId).find("a").click();
+
+        openDoor = new TimelineLite({onComplete: zindex, onReverseComplete: resumehover});
+        openDoor.to([bf, cur], 2, {left: '-100%', marginLeft: 0}, "open")
+                .to(af, 2, {left: '100%'}, "open");
+        e.stopPropagation();
+    }
+
+    function resumehover() {
+        $(".list-item").on("mouseenter", mousehover);
+    }
+    function zindex() {
+        alert(1);
+        $(".m-sld").attr("zIndex", "1");
+    }
+
+
+    function mousehover(e) {
+        console.log($(e.relatedTarget).attr("id"));
+        var index = $(this).index(),
+                bf = $(".list-item:lt(" + index + ")"),
+                af = $(".list-item:gt(" + index + ")"),
+                cur = $(this),
+                fromElem = $(e.relatedTarget);
+        if (fromElem.attr("id")) {
+
+            extendDoor = new TimelineLite();
+            extendDoor.to(bf, .3, {left: '-3em'}, 'sm')
+                    .to(af, .3, {left: '3em'}, 'sm')
+                    .to(cur, .3, {left: '-3em', width: '36em'}, 'sm')
+                    .to(fromElem, .3, {width: '30em'}, 'sm')
+        } else {
+
+            extendDoor = new TimelineLite();
+            extendDoor.to(bf, 1, {left: '-3em'}, 'sm')
+                    .to(af, 1, {left: '3em'}, 'sm')
+                    .to(cur, 1, {left: '-3em', width: '36em'}, 'sm')
+        }
+    }
+
+
+</script>
+</body>
+</html>

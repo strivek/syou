@@ -32,29 +32,71 @@
     </div>
 </div>
 <script src="../js/jquery-1.10.1.js"></script>
+<script src="../js/greensock/TweenLite.min.js"></script>
+<script src="../js/greensock/TimelineLite.min.js"></script>
+<script src="../js/greensock/plugins/CSSPlugin.min.js"></script>
 <script>
+    var openDoor;
+    var extendDoor
+
+
+
     $(".list-item").hover(function () {
         var index = $(this).index();
-        $(".list-item:lt(" + index + ")").addClass("hover-before");
-        $(".list-item:gt(" + index + ")").addClass("hover-after");
-        $(this).addClass("hover");
+
+        var bf = $(".list-item:lt(" + index + ")");
+        var af = $(".list-item:gt(" + index + ")")
+        var cur = $(".hover-before")
+
+
+//        extendDoor.to($(".list-item .hover-before"),{width:'39em'});
+
+
     }, function () {
-        $(".list-item").removeClass("hover hover-before hover-after")
+
     })
+    $(".list-item").hover(function () {
+        var index = $(this).index();
+        var bf = $(".list-item:lt(" + index + ")");
+        var af = $(".list-item:gt(" + index + ")");
+        var cur = $(this);
+        console.log(bf.length);
+        extendDoor = new TimelineLite();
+        extendDoor.to(bf, .4, {left: '-3em'}, "wd")
+                .to(af, .4, {left: '3em'}, "wd")
+                .to(cur, .4, {width: '36em', left: '-3em'}, "wd")
+
+    }, function () {
+        extendDoor.reverse();
+
+    })
+
     $(".list-item").click(function (e) {
         var index = $(this).index();
-        $(".m-sld").attr("id", "z-detail")
-//
-//    $(".list-item").not(":gt("+index+")").addClass("before-click");
-//    $(".list-item:gt("+index+")").addClass("after-click");
+        $(".list-item").not(":gt(" + index + ")").addClass("before-click");
+        $(".list-item:gt(" + index + ")").addClass("after-click");
+        var beforeClick = $(".m-sld .before-click");
+        var afterClcik = $(".m-sld .after-click");
+
+
+        openDoor = new TimelineLite({onComplete: addhover});
+
+        openDoor.to(beforeClick, 2, {left: '-100%', marginLeft: 0}, "open")
+                .to(afterClcik, 1, {left: '100%', margin: 0}, "open");
+
         e.stopPropagation();
 
     })
     $("body").click(function () {
-        $(".list-item").removeClass("before-click after-click");
-        $("#step-6").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function () {
-        });
+//        $(".list-item").removeClass("before-click after-click");
+//        $("#step-6").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function () {
+//        });
+        openDoor.reverse(2);
+
     })
+    function addhover() {
+
+    }
 
 </script>
 </body>
