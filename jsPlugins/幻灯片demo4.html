@@ -152,6 +152,7 @@
 
     function mousehover(e) {
         console.log($(e.relatedTarget).attr("id"));
+
         var index = $(this).index(),
                 bf = $(".list-item:lt(" + index + ")"),
                 af = $(".list-item:gt(" + index + ")"),
@@ -170,6 +171,8 @@
             extendDoor.to(bf, 1, {left: '-3em'}, 'sm')
                     .to(af, 1, {left: '3em'}, 'sm')
                     .to(cur, 1, {left: '-3em', width: '36em'}, 'sm')
+
+            $(".cur").addClass()
         }
     }
 
