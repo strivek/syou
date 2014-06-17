@@ -9,7 +9,11 @@
     var openDoor;
     var flexslider;
     var time;
-
+    var listItems = $(".list-item");
+    var backBtn = $(".btn-return");
+    var slide = $(".m-flexslider");
+    var wrap = $(".wrap");
+    var zindex = $(".m-sld .inner,.m-sld");
     init();
 
 
@@ -23,7 +27,7 @@
 
 
     function init() {
-        myScroll = new IScroll('#boxscroll', {scrollX: true, scrollY: false, bounceTime: 1500, click: true});
+        myScroll = new IScroll('#boxscroll', { mouseWheel: true, scrollX: true, scrollY: false, bounceTime: 1200, click: true});
 
         isdesktop = isDesktop();
 
@@ -38,10 +42,15 @@
     }
 
     function closeDoor() {
+
         openDoor.timeScale(4).reverse();
+        $(".list-item").on("mouseenter", hoverIn);
     }
 
     function doorOpen(event) {
+
+        $(".list-item").off("mouseenter", hoverIn);
+        $(".list-item").off("mouseout", hoverOut());
 
         openDoor = new TimelineLite({ onReverseComplete: resumehover});
 
@@ -49,35 +58,33 @@
             screen = $(window).width();
         time = 2;
 
-        bf = $(".list-item:lt(" + index + ")"),
-            af = $(".list-item:gt(" + index + ")"),
+
+//            bf = $(".list-item:lt(" + index + ")"),
+//            af = $(".list-item:gt(" + index + ")"),
+        bf = listItems.slice(0, index + 1),
+            af = listItems.slice(index + 1),
             cur = $(this),
-            slideId = $(this).attr("id").split("-")[1] - 1,
-            zindex = $(".m-sld .inner,.m-sld"),
-            backBtn = $(".btn-return"),
-            slide = $(".m-flexslider"),
-            arrBefore = [cur],
-            wrap = $(".wrap");
-        bf.length != 0 ? arrBefore.push(bf) : "";
+            slideId = $(this).attr("id").split("-")[1] - 1;
+
 
         if (screen > 1440) {
 
-            time = 2;
+            time = 2.5;
 
         } else if (screen > 1000) {
             time = 1.3;
 
 
         } else if (screen > 700) {
-            time = 1.5;
+            time = 1.8;
         }
-
+        $(".g-sld .flex-control-paging li").eq(slideId).find("a").click();
         openDoor.to(wrap, 0, {css: {display: 'none'}})
-            .to(arrBefore, time, {css: {left: '-' + screen}}, "open")
+            .to(bf, time, {css: {left: '-' + screen}}, "open")
             .to(af, time, {css: {left: screen}}, "open")
             .to(backBtn, .2, {css: { zIndex: 110}}, "open")
             .to(zindex, 0, {css: {zIndex: 0}})
-        $(".g-sld .flex-control-paging li").eq(slideId).find("a").click();
+
         event.stopPropagation();
     }
 
@@ -129,9 +136,9 @@
     function resizeHover(e) {
         isdesktop = $(window).width() > 1024 ? true : $(window).height() > 1024 ? true : false;
         if (isdesktop) {
-            $(".list-item").css("opacity", ".8");
+            $(".list-item .shade").css("opacity", ".8");
         } else {
-            $(".list-item").css("opacity", ".4");
+            $(".list-item .shade").css("opacity", ".5");
         }
 
     }
