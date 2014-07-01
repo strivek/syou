@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        a{
+            position: absolute;
+            height: 500px;
+            width: 500px;
+            top:0;
+            left:50%;
+            display: block;
+            /*解决问题办法*/
+            background-image:url(about:blank);
+            background-color: #000;
+            /* 或者加边框 */
+            border: 1px solid #fff;
+            /* 或者加背景图片*/
+            background-image:url(xxx.jpg)
+            /* 或者加空白页的命令 */
+        background-image:url(about:blank);
+        }
+        .inner{
+            width:5px;
+            height: 5px;
+        }
+        body{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<img src="../img/big.jpg" alt=""/>
+<a href="www.baidu.com">
+    <div class="inner">
+
+    </div>
+</a>
+</body>
+</html>
